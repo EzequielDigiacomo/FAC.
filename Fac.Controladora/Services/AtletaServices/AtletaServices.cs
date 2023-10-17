@@ -1,4 +1,5 @@
-﻿using Fac.AccesoDatos;
+﻿
+using Fac.AccesoDatos;
 using Fac.Controladora.DTOs.AtletaDtos;
 using Fac.Entidades;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace Fac.Controladora.Services.AtletaServices
     public class AtletaServices : IAtletaServices
     {
         private readonly ApplicationDbContext _context;
+ 
         public AtletaServices(ApplicationDbContext context)
         {
             _context = context;
@@ -90,10 +92,19 @@ namespace Fac.Controladora.Services.AtletaServices
             {
                 throw new Exception($"Ya existe un usuario con ese dni {dto.Dni}");
             }
-            //var dniMadre = await _context.Atletas.AnyAsync(x => x.IdMadre  == 0)
-            //{
-                
-            //}
+
+            var fechaActual = DateTime.Today;
+
+            var edad = fechaActual - dto.FechaDeNacimientoDelAtleta;
+            double dias = edad.TotalDays;
+            double anios = dias / 365;
+
+            if (anios <= 7)
+            {
+                throw new Exception($"El Atleta ingresado es menor de edad");
+            };
+
+
 
             var atleta = new Atleta
             {

@@ -26,6 +26,8 @@ namespace FAC.API
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             builder.Services.AddScoped<IAtletaServices, AtletaServices>();
             builder.Services.AddScoped<IMadreAtletaServices, MadreAtletaServices>();
             builder.Services.AddScoped<IPadreAtletaServices, PadreAtletaServices>();
