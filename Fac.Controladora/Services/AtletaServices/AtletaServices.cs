@@ -56,7 +56,7 @@ namespace Fac.Controladora.Services.AtletaServices
         {
             var atleta = await BuscarPorId(id);
 
-            return new AtletaDetalleDto
+            return  new AtletaDetalleDto
             {
                 Id = atleta.Id,
                 Nombre = atleta.Nombre,

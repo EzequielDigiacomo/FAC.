@@ -17,6 +17,7 @@ namespace FAC.API.Controllers
 
         // GET: api/<AtletaController>
         [HttpGet]
+       
         public async Task<List<AtletaDetalleDto>> Get()
         {
             var respuesta = await _services.ObtenerTodos();
