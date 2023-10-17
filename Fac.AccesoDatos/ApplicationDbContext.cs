@@ -111,16 +111,13 @@ namespace Fac.AccesoDatos
 
             modelBuilder.Entity<Atleta>()
                         .HasOne(m => m.MadreAtleta);
-                        
-                        
-                        
-
+         
             modelBuilder.Entity<Atleta>()
                         .HasOne(p => p.PadreAtleta);
 
             modelBuilder.Entity<Atleta>()
-                        .HasOne(t => t.TutorAtleta)
-                        .
+                        .HasOne(t => t.TutorAtleta);
+                        
 
 
 
@@ -156,6 +153,10 @@ namespace Fac.AccesoDatos
 
             modelBuilder.Entity<MadreAtleta>()
                         .Property(x => x.FotoDniDorsalMadre);
+
+            //modelBuilder.Entity<MadreAtleta>()
+            //            .HasOne(a => a.a);
+                        
 
             //---------Padre---------
 

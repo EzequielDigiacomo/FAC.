@@ -31,6 +31,8 @@ namespace Fac.Entidades
         public string FotoPasaporteFrontal { get; set; }
         public string FotoPasaporteDorsal { get; set; }
 
+        
+        
         //-----Relaciones
 
 
