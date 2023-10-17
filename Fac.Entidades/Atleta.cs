@@ -9,9 +9,6 @@ namespace Fac.Entidades
     public class Atleta
     {
         public int Id { get; set; }
-        public int? MadreAtletaId { get; set; }
-        public int? PadreAtletaId { get; set; }
-        public int? TutorAtletaId { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Nacionalidad { get; set; }
@@ -30,11 +27,15 @@ namespace Fac.Entidades
         public string FotoDniDorsal { get; set; }
         public string FotoPasaporteFrontal { get; set; }
         public string FotoPasaporteDorsal { get; set; }
-        
+
         //-----Relaciones
 
-        public virtual MadreAtleta? MadreAtleta { get; set; } 
-        public virtual PadreAtleta? PadreAtleta { get; set; } 
-        public virtual TutorAtleta? TutorAtleta { get; set; } 
+        public int? IdMadre { get; set; }
+        public int? IdPadre { get; set; }
+        public int? IdTutor { get; set; }
+
+        public virtual MadreAtleta MadreAtleta { get; set; }
+        public virtual PadreAtleta PadreAtleta { get; set; }
+        public virtual TutorAtleta TutorAtleta { get; set; }
     }
 }

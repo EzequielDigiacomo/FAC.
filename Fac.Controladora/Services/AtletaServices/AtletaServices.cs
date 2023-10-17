@@ -1,5 +1,4 @@
-﻿
-using Fac.AccesoDatos;
+﻿using Fac.AccesoDatos;
 using Fac.Controladora.DTOs.AtletaDtos;
 using Fac.Entidades;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +15,6 @@ namespace Fac.Controladora.Services.AtletaServices
     public class AtletaServices : IAtletaServices
     {
         private readonly ApplicationDbContext _context;
- 
         public AtletaServices(ApplicationDbContext context)
         {
             _context = context;
@@ -45,9 +43,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = a.FotoDniDorsal,
                 FotoPasaporteFrontal = a.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = a.FotoPasaporteDorsal,
-                MadreAtletaId = a.MadreAtletaId,
-                PadreAtletaId = a.PadreAtletaId,
-                TutorAtletaId = a.TutorAtletaId,
+                IdMadre = a.IdMadre,
+                IdPadre = a.IdPadre,
+                IdTutor = a.IdTutor,
 
             }).ToListAsync();
 
@@ -58,7 +56,7 @@ namespace Fac.Controladora.Services.AtletaServices
         {
             var atleta = await BuscarPorId(id);
 
-            return  new AtletaDetalleDto
+            return new AtletaDetalleDto
             {
                 Id = atleta.Id,
                 Nombre = atleta.Nombre,
@@ -79,9 +77,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = atleta.FotoDniDorsal,
                 FotoPasaporteFrontal = atleta.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = atleta.FotoPasaporteDorsal,
-                MadreAtletaId = atleta.MadreAtletaId,
-                PadreAtletaId = atleta.PadreAtletaId,
-                TutorAtletaId = atleta.TutorAtletaId,
+                IdMadre = atleta.IdMadre,
+                IdPadre = atleta.IdPadre,
+                IdTutor = atleta.IdTutor,
             };
         }
 
@@ -92,19 +90,10 @@ namespace Fac.Controladora.Services.AtletaServices
             {
                 throw new Exception($"Ya existe un usuario con ese dni {dto.Dni}");
             }
-
-            var fechaActual = DateTime.Today;
-
-            var edad = fechaActual - dto.FechaDeNacimientoDelAtleta;
-            double dias = edad.TotalDays;
-            double anios = dias / 365;
-
-            if (anios <= 7)
-            {
-                throw new Exception($"El Atleta ingresado es menor de edad");
-            };
-
-
+            //var dniMadre = await _context.Atletas.AnyAsync(x => x.IdMadre  == 0)
+            //{
+                
+            //}
 
             var atleta = new Atleta
             {
@@ -126,9 +115,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = dto.FotoDniDorsal,
                 FotoPasaporteFrontal = dto.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = dto.FotoPasaporteDorsal,
-                MadreAtletaId = dto.MadreAtletaId,
-                PadreAtletaId = dto.PadreAtletaId,
-                TutorAtletaId = dto.TutorAtletaId,
+                IdMadre = dto.IdMadre,
+                IdPadre = dto.IdPadre,
+                IdTutor = dto.IdTutor,
             };
 
 
@@ -156,9 +145,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = dto.FotoDniDorsal,
                 FotoPasaporteFrontal = dto.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = dto.FotoPasaporteDorsal,
-                MadreAtletaId = dto.MadreAtletaId,
-                PadreAtletaId = dto.PadreAtletaId,
-                TutorAtletaId = dto.TutorAtletaId,
+                IdMadre = dto.IdMadre,
+                IdPadre = dto.IdPadre,
+                IdTutor = dto.IdTutor,
 
             };
 
@@ -192,9 +181,9 @@ namespace Fac.Controladora.Services.AtletaServices
             atleta.FotoDniDorsal = dto.FotoDniDorsal;
             atleta.FotoPasaporteFrontal = dto.FotoPasaporteFrontal;
             atleta.FotoPasaporteDorsal = dto.FotoPasaporteDorsal;
-            atleta.MadreAtletaId = dto.MadreAtletaId;
-            atleta.PadreAtletaId = dto.PadreAtletaId;
-            atleta.TutorAtletaId = dto.TutorAtletaId;
+            atleta.IdMadre = dto.IdMadre;
+            atleta.IdPadre = dto.IdPadre;
+            atleta.IdTutor = dto.IdTutor;
 
 
 
@@ -222,9 +211,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = atleta.FotoDniDorsal,
                 FotoPasaporteFrontal = atleta.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = atleta.FotoPasaporteDorsal,
-                MadreAtletaId = atleta.MadreAtletaId,
-                PadreAtletaId = atleta.PadreAtletaId,
-                TutorAtletaId = atleta.TutorAtletaId,
+                IdMadre = atleta.IdMadre,
+                IdPadre = atleta.IdPadre,
+                IdTutor = atleta.IdTutor
 
             };
         }
@@ -256,9 +245,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = atleta.FotoDniDorsal,
                 FotoPasaporteFrontal = atleta.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = atleta.FotoPasaporteDorsal,
-                MadreAtletaId = atleta.MadreAtletaId,
-                PadreAtletaId = atleta.PadreAtletaId,
-                TutorAtletaId = atleta.TutorAtletaId,
+                IdMadre = atleta.IdMadre,
+                IdPadre = atleta.IdPadre,
+                IdTutor = atleta.IdTutor
             };
         }
 

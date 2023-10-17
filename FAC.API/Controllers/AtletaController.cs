@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using Fac.Controladora.DTOs.AtletaDtos;
+﻿using Fac.Controladora.DTOs.AtletaDtos;
 using Fac.Controladora.Services.AtletaServices;
-using Fac.Entidades;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,16 +10,13 @@ namespace FAC.API.Controllers
     public class AtletaController : ControllerBase
     {
         private readonly IAtletaServices _services;
-       
         public AtletaController(IAtletaServices services)
         {
             _services = services;
-          
         }
 
         // GET: api/<AtletaController>
         [HttpGet]
-       
         public async Task<List<AtletaDetalleDto>> Get()
         {
             var respuesta = await _services.ObtenerTodos();
@@ -41,7 +36,6 @@ namespace FAC.API.Controllers
         [HttpPost]
         public async Task<AtletaDetalleDto> Post([FromBody] AtletaCrearDto dto)
         {
-            //var atleta = _mapper.Map<Atleta>(dto);
             var respuesta = await _services.Crear(dto);
             return respuesta;
         }

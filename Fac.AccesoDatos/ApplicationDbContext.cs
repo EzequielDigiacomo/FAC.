@@ -99,25 +99,24 @@ namespace Fac.AccesoDatos
                        .Property(x => x.FotoPasaporteDorsal)
                        .IsRequired();
 
-            //modelBuilder.Entity<Atleta>()
-            //           .Property(x => x.IdMadre);
+            modelBuilder.Entity<Atleta>()
+                       .Property(x => x.IdMadre);
+            
+            modelBuilder.Entity<Atleta>()
+                       .Property(x => x.IdPadre);
 
-            //modelBuilder.Entity<Atleta>()
-            //           .Property(x => x.IdPadre);
-
-            //modelBuilder.Entity<Atleta>()
-            //           .Property(x => x.IdTutor);
+            modelBuilder.Entity<Atleta>()
+                       .Property(x => x.IdTutor);
 
 
             modelBuilder.Entity<Atleta>()
                         .HasOne(m => m.MadreAtleta);
-         
+
             modelBuilder.Entity<Atleta>()
                         .HasOne(p => p.PadreAtleta);
 
             modelBuilder.Entity<Atleta>()
                         .HasOne(t => t.TutorAtleta);
-                        
 
 
 
@@ -153,8 +152,6 @@ namespace Fac.AccesoDatos
 
             modelBuilder.Entity<MadreAtleta>()
                         .Property(x => x.FotoDniDorsalMadre);
-
-        
 
             //---------Padre---------
 
@@ -222,6 +219,20 @@ namespace Fac.AccesoDatos
 
             modelBuilder.Entity<TutorAtleta>()
                         .Property(x => x.FotoDniDorsalTutor);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         }
