@@ -30,12 +30,8 @@ namespace Fac.Entidades
         public string FotoDniDorsal { get; set; }
         public string FotoPasaporteFrontal { get; set; }
         public string FotoPasaporteDorsal { get; set; }
-
-        
         
         //-----Relaciones
-
-
 
         public virtual MadreAtleta? MadreAtleta { get; set; } 
         public virtual PadreAtleta? PadreAtleta { get; set; } 
