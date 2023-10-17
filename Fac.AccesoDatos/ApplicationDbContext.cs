@@ -154,9 +154,7 @@ namespace Fac.AccesoDatos
             modelBuilder.Entity<MadreAtleta>()
                         .Property(x => x.FotoDniDorsalMadre);
 
-            //modelBuilder.Entity<MadreAtleta>()
-            //            .HasOne(a => a.a);
-                        
+        
 
             //---------Padre---------
 
@@ -224,20 +222,6 @@ namespace Fac.AccesoDatos
 
             modelBuilder.Entity<TutorAtleta>()
                         .Property(x => x.FotoDniDorsalTutor);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         }
