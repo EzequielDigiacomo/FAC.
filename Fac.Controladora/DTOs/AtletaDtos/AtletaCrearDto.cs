@@ -26,9 +26,8 @@ namespace Fac.Controladora.DTOs.AtletaDtos
         public string FotoDniDorsal { get; set; }
         public string FotoPasaporteFrontal { get; set; }
         public string FotoPasaporteDorsal { get; set; }
-        public int? IdMadre { get; set; }
-        public int? IdPadre { get; set; }
-        public int? IdTutor { get; set; }
-
+        public int? MadreAtletaId { get; set; }
+        public int? PadreAtletaId { get; set; }
+        public int? TutorAtletaId { get; set; }
     }
 }

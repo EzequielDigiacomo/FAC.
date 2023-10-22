@@ -43,9 +43,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = a.FotoDniDorsal,
                 FotoPasaporteFrontal = a.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = a.FotoPasaporteDorsal,
-                IdMadre = a.IdMadre,
-                IdPadre = a.IdPadre,
-                IdTutor = a.IdTutor,
+                MadreAtletaId = a.MadreAtletaId,
+                PadreAtletaId = a.PadreAtletaId,
+                TutorAtletaId = a.TutorAtletaId
 
             }).ToListAsync();
 
@@ -77,9 +77,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = atleta.FotoDniDorsal,
                 FotoPasaporteFrontal = atleta.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = atleta.FotoPasaporteDorsal,
-                IdMadre = atleta.IdMadre,
-                IdPadre = atleta.IdPadre,
-                IdTutor = atleta.IdTutor,
+                MadreAtletaId = atleta.MadreAtletaId,
+                PadreAtletaId = atleta.PadreAtletaId,
+                TutorAtletaId = atleta.TutorAtletaId,
             };
         }
 
@@ -115,9 +115,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = dto.FotoDniDorsal,
                 FotoPasaporteFrontal = dto.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = dto.FotoPasaporteDorsal,
-                IdMadre = dto.IdMadre,
-                IdPadre = dto.IdPadre,
-                IdTutor = dto.IdTutor,
+                MadreAtletaId = dto.MadreAtletaId,
+                PadreAtletaId = dto.PadreAtletaId,
+                TutorAtletaId = dto.TutorAtletaId,
             };
 
 
@@ -145,9 +145,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = dto.FotoDniDorsal,
                 FotoPasaporteFrontal = dto.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = dto.FotoPasaporteDorsal,
-                IdMadre = dto.IdMadre,
-                IdPadre = dto.IdPadre,
-                IdTutor = dto.IdTutor,
+                MadreAtletaId = dto.MadreAtletaId,
+                PadreAtletaId = dto.PadreAtletaId,
+                TutorAtletaId = dto.TutorAtletaId,
 
             };
 
@@ -181,9 +181,9 @@ namespace Fac.Controladora.Services.AtletaServices
             atleta.FotoDniDorsal = dto.FotoDniDorsal;
             atleta.FotoPasaporteFrontal = dto.FotoPasaporteFrontal;
             atleta.FotoPasaporteDorsal = dto.FotoPasaporteDorsal;
-            atleta.IdMadre = dto.IdMadre;
-            atleta.IdPadre = dto.IdPadre;
-            atleta.IdTutor = dto.IdTutor;
+            atleta.MadreAtletaId = dto.MadreAtletaId;
+            atleta.PadreAtletaId = dto.PadreAtletaId;
+            atleta.TutorAtletaId = dto.TutorAtletaId;
 
 
 
@@ -211,10 +211,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = atleta.FotoDniDorsal,
                 FotoPasaporteFrontal = atleta.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = atleta.FotoPasaporteDorsal,
-                IdMadre = atleta.IdMadre,
-                IdPadre = atleta.IdPadre,
-                IdTutor = atleta.IdTutor
-
+                MadreAtletaId = atleta.MadreAtletaId,
+                PadreAtletaId = atleta.PadreAtletaId,
+                TutorAtletaId = atleta.TutorAtletaId,
             };
         }
 
@@ -245,9 +244,9 @@ namespace Fac.Controladora.Services.AtletaServices
                 FotoDniDorsal = atleta.FotoDniDorsal,
                 FotoPasaporteFrontal = atleta.FotoPasaporteFrontal,
                 FotoPasaporteDorsal = atleta.FotoPasaporteDorsal,
-                IdMadre = atleta.IdMadre,
-                IdPadre = atleta.IdPadre,
-                IdTutor = atleta.IdTutor
+                MadreAtletaId = atleta.MadreAtletaId,
+                PadreAtletaId = atleta.PadreAtletaId,
+                TutorAtletaId = atleta.TutorAtletaId,
             };
         }
 

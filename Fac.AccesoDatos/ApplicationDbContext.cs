@@ -100,16 +100,6 @@ namespace Fac.AccesoDatos
                        .IsRequired();
 
             modelBuilder.Entity<Atleta>()
-                       .Property(x => x.IdMadre);
-            
-            modelBuilder.Entity<Atleta>()
-                       .Property(x => x.IdPadre);
-
-            modelBuilder.Entity<Atleta>()
-                       .Property(x => x.IdTutor);
-
-
-            modelBuilder.Entity<Atleta>()
                         .HasOne(m => m.MadreAtleta);
 
             modelBuilder.Entity<Atleta>()
