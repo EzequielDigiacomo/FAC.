@@ -124,7 +124,7 @@ namespace Fac.AccesoDatos.Migrations
 
                     b.HasIndex("TutorAtletaId");
 
-                    b.ToTable("Atletas");
+                    b.ToTable("Atletas", (string)null);
                 });
 
             modelBuilder.Entity("Fac.Entidades.MadreAtleta", b =>
@@ -168,7 +168,7 @@ namespace Fac.AccesoDatos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MadreAtletas");
+                    b.ToTable("MadreAtletas", (string)null);
                 });
 
             modelBuilder.Entity("Fac.Entidades.PadreAtleta", b =>
@@ -212,7 +212,7 @@ namespace Fac.AccesoDatos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PadreAtletas");
+                    b.ToTable("PadreAtletas", (string)null);
                 });
 
             modelBuilder.Entity("Fac.Entidades.TutorAtleta", b =>
@@ -256,7 +256,7 @@ namespace Fac.AccesoDatos.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TutorAtletas");
+                    b.ToTable("TutorAtletas", (string)null);
                 });
 
             modelBuilder.Entity("Fac.Entidades.Atleta", b =>

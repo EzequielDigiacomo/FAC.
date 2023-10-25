@@ -8,30 +8,31 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-
 namespace FAC.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private readonly IConfiguration _config;
+        private readonly IConfiguration _configuration;
+
         public LoginController(IConfiguration config)
         {
-            _config = config;
+            _configuration = config;
         }
+
         [HttpPost]
         public IActionResult Login(LoginUser userLogin)
         {
             var user = Authenticate(userLogin);
 
-            if (user != null) 
+            if (user != null)
             {
                 //crear token
 
                 var token = Generate(user);
 
-                return Ok(token);   
+                return Ok(token);
             }
 
             return NotFound("Usuario no encontrado");
@@ -39,7 +40,7 @@ namespace FAC.API.Controllers
 
         private UserModel Authenticate(LoginUser userLogin)
         {
-            var currentUser = UserConstants.Users.FirstOrDefault(user => user.Username.ToLower() == userLogin.UserName.ToLower()
+            var currentUser = UserConstants.Users.FirstOrDefault(user => user.UserName.ToLower() == userLogin.UserName.ToLower()
             && user.Password == userLogin.Password);
 
             if (currentUser != null)
@@ -53,13 +54,13 @@ namespace FAC.API.Controllers
 
         private string Generate(UserModel user)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             //crear los claims (reclamaciones)
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Username),
+                new Claim(ClaimTypes.NameIdentifier, user.UserName),
                 new Claim(ClaimTypes.Email, user.EmailAdress),
                 new Claim(ClaimTypes.GivenName, user.FirstName),
                 new Claim(ClaimTypes.Surname, user.LastName),
@@ -67,15 +68,18 @@ namespace FAC.API.Controllers
             };
 
             //crear el token
-            var token =  new JwtSecurityToken(_config["Jwt:Key"],
-                                         _config["Jwt:Audience"],
+            var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
+                                         _configuration["Jwt:Audience"],
                                          claims,
-                                         expires: DateTime.Now.AddMinutes(60),
+                                         expires: DateTime.Now.AddMinutes(1),
                                          signingCredentials: credentials);
-       
+
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-       
+
     }
+
+
+
 }

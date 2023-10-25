@@ -19,6 +19,7 @@ namespace Fac.AccesoDatos
         public DbSet<PadreAtleta> PadreAtletas { get; set; }
         public DbSet<TutorAtleta> TutorAtletas { get;set; }
 
+      
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -209,6 +210,13 @@ namespace Fac.AccesoDatos
 
             modelBuilder.Entity<TutorAtleta>()
                         .Property(x => x.FotoDniDorsalTutor);
+
+
+            //------------USUARIO
+
+
+          
+
 
 
 

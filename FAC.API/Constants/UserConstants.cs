@@ -8,7 +8,7 @@ namespace FAC.API.Constants
         {
               new UserModel()
               {
-                  Username = "admin",
+                  UserName = "admin",
                   Password = "admin",
                   Rol = "Administrador",
                   EmailAdress = "ezequiel250891@hotmail.com",
@@ -18,7 +18,7 @@ namespace FAC.API.Constants
 
                new UserModel()
               {
-                  Username = "user1",
+                  UserName = "user1",
                   Password = "user1",
                   Rol = "usuer",
                   EmailAdress = "user1@hotmail.com",
