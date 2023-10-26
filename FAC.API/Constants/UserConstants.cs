@@ -10,7 +10,7 @@ namespace FAC.API.Constants
               {
                   UserName = "admin",
                   Password = "admin",
-                  Rol = "Administrador",
+                  Rol = "administrador",
                   EmailAdress = "ezequiel250891@hotmail.com",
                   LastName = "Di Giacomo",
                   FirstName = "Ezequiel"
@@ -20,7 +20,7 @@ namespace FAC.API.Constants
               {
                   UserName = "user1",
                   Password = "user1",
-                  Rol = "usuer",
+                  Rol = "entrenador",
                   EmailAdress = "user1@hotmail.com",
                   LastName = "Jose",
                   FirstName = "Perez"

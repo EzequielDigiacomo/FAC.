@@ -20,6 +20,13 @@ namespace FAC.API.Controllers
         {
             _configuration = config;
         }
+        [HttpGet]
+        public IActionResult Get()
+        {
+            var currentUser = GetCurrentUser();
+
+                return Ok($"Hola {currentUser.FirstName}, tu eres {currentUser.Rol} " );
+        }
 
         [HttpPost]
         public IActionResult Login(LoginUser userLogin)
@@ -75,6 +82,25 @@ namespace FAC.API.Controllers
                                          signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        private UserModel GetCurrentUser()
+        {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+            if (identity != null)
+            {
+                var userClaims = identity.Claims;
+                return new UserModel
+                {
+                    UserName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                    EmailAdress = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+                    FirstName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.GivenName)?.Value,
+                    LastName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value,
+                    Rol = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Role)?.Value
+                };
+            }
+            return null;
         }
 
 

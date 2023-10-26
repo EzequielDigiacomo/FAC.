@@ -2,6 +2,7 @@
 using Fac.Controladora.DTOs.TutorAtletaDtos;
 using Fac.Controladora.Services.PadreServices;
 using Fac.Controladora.Services.TutorAtletaServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace FAC.API.Controllers
 
         // GET: api/<TutorAtletaController>
         [HttpGet]
+        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<List<TutorAtletaDetalleDto>> Get()
         {
             var respuesta = await _services.ObtenerTodos();
@@ -28,6 +30,7 @@ namespace FAC.API.Controllers
 
         // GET api/<TutorAtletaController>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<TutorAtletaDetalleDto> GetPorId(int id)
         {
             var respuesta = await _services.ObtenerPorId(id);
@@ -36,6 +39,7 @@ namespace FAC.API.Controllers
 
         // POST api/<TutorAtletaController>
         [HttpPost]
+        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<TutorAtletaDetalleDto> Post([FromBody] TutorAtletaCrearDto dto)
         {
             var respuesta = await _services.Crear(dto);
@@ -44,6 +48,7 @@ namespace FAC.API.Controllers
 
         // PUT api/<TutorAtletaController>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<TutorAtletaDetalleDto> Put(int id, [FromBody] TutorAtletaCrearDto dto)
         {
             var respuesta = await _services.Actualizar(id, dto);
@@ -52,6 +57,7 @@ namespace FAC.API.Controllers
 
         // DELETE api/<TutorAtletaController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<TutorAtletaDetalleDto> Delete(int id)
         {
             var respuesta = await _services.Remover(id);

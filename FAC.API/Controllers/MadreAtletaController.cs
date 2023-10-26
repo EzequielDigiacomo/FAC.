@@ -2,6 +2,7 @@
 using Fac.Controladora.DTOs.MadreAtletaDtos;
 using Fac.Controladora.Services.AtletaServices;
 using Fac.Controladora.Services.MadreAtletaServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace FAC.API.Controllers
 
         // GET: api/<MadreAtletaController>
         [HttpGet]
+        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<List<MadreAtletaDetalleDto>> Get()
         {
             var respuesta = await _services.ObtenerTodos();
@@ -28,6 +30,7 @@ namespace FAC.API.Controllers
 
         // GET api/<MadreAtletaController>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<MadreAtletaDetalleDto> GetPorId(int id)
         {
             var respuesta = await _services.ObtenerPorId(id);
@@ -36,6 +39,7 @@ namespace FAC.API.Controllers
 
         // POST api/<MadreAtletaController>
         [HttpPost]
+        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<MadreAtletaDetalleDto> Post([FromBody] MadreAtletaCrearDto dto)
         {
             var respuesta = await _services.Crear(dto);
@@ -44,6 +48,7 @@ namespace FAC.API.Controllers
 
         // PUT api/<MadreAtletaController>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<MadreAtletaDetalleDto> Put(int id, [FromBody] MadreAtletaCrearDto dto)
         {
             var respuesta = await _services.Actualizar(id, dto);
@@ -52,6 +57,7 @@ namespace FAC.API.Controllers
 
         // DELETE api/<MadreAtletaController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<MadreAtletaDetalleDto> Delete(int id)
         {
             var respuesta = await _services.Remover(id);
