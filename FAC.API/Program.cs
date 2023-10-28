@@ -1,6 +1,7 @@
 
 using Fac.AccesoDatos;
 using Fac.Controladora.Services.AtletaServices;
+using Fac.Controladora.Services.LoginUserServices;
 using Fac.Controladora.Services.MadreAtletaServices;
 using Fac.Controladora.Services.PadreServices;
 using Fac.Controladora.Services.TutorAtletaServices;
@@ -87,16 +88,40 @@ namespace FAC.API
             builder.Services.AddScoped<IMadreAtletaServices, MadreAtletaServices>();
             builder.Services.AddScoped<IPadreAtletaServices, PadreAtletaServices>();
             builder.Services.AddScoped<ITutorAtletaServices, TutorAtletaServices>();
+            builder.Services.AddScoped<ILoginUserServices, LoginUserServices>();
+
+
+            //----Cors para el conflicto entre web y api--
+
+            //builder.Services.AddCors(options => {
+            //    options.AddPolicy("Nueva Politica", app =>
+            //    {
+            //        app.AllowAnyOrigin()
+            //        .AllowAnyHeader()
+            //        .AllowAnyMethod();
+            //    });   
+            //});
 
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
+            //------Swagger original
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            //-------------------
+
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
+
+            //------activar Cors
+
+            //app.UseCors("Nueva Politica");
+
 
             app.UseHttpsRedirection();
 

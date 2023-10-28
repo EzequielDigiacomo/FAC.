@@ -1,6 +1,7 @@
-﻿using Fac.Controladora.DTOs.LoginUser;
+﻿using Fac.AccesoDatos;
+using Fac.Controladora.DTOs.LoginUser;
 using Fac.Entidades;
-using FAC.API.Constants;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -14,18 +15,20 @@ namespace FAC.API.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
+        private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
 
-        public LoginController(IConfiguration config)
+        public LoginController(IConfiguration config, ApplicationDbContext context = null)
         {
             _configuration = config;
+            _context = context;
         }
         [HttpGet]
         public IActionResult Get()
         {
             var currentUser = GetCurrentUser();
 
-                return Ok($"Hola {currentUser.FirstName}, tu eres {currentUser.Rol} " );
+            return Ok($"Hola {currentUser.FirstName}, tu eres {currentUser.Rol} ");
         }
 
         [HttpPost]
@@ -47,7 +50,7 @@ namespace FAC.API.Controllers
 
         private UserModel Authenticate(LoginUser userLogin)
         {
-            var currentUser = UserConstants.Users.FirstOrDefault(user => user.UserName.ToLower() == userLogin.UserName.ToLower()
+            var currentUser = _context.Login.FirstOrDefault(user => user.UserName.ToLower() == userLogin.UserName.ToLower()
             && user.Password == userLogin.Password);
 
             if (currentUser != null)

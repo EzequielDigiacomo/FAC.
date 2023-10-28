@@ -18,6 +18,7 @@ namespace Fac.AccesoDatos
         public DbSet<MadreAtleta> MadreAtletas { get; set; }
         public DbSet<PadreAtleta> PadreAtletas { get; set; }
         public DbSet<TutorAtleta> TutorAtletas { get;set; }
+        public DbSet<UserModel> Login { get; set; }
 
       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -212,10 +213,45 @@ namespace Fac.AccesoDatos
                         .Property(x => x.FotoDniDorsalTutor);
 
 
-            //------------USUARIO
+            //------------USUARIO codeada a mano en sql
+
+            //modelBuilder.Entity<UserModel>()
+            //            .HasKey(x => x.Id);
+
+            //modelBuilder.Entity<UserModel>()
+            //            .Property(x => x.UserName)
+            //            .HasMaxLength (15)
+            //            .IsRequired ();
 
 
-          
+            //modelBuilder.Entity<UserModel>()
+            //           .Property(x => x.Password)
+            //           .IsRequired();
+
+            //modelBuilder.Entity<UserModel>()
+            //           .Property(x => x.EmailAdress)
+            //           .HasMaxLength(40)
+            //           .IsRequired();
+
+            //modelBuilder.Entity<UserModel>()
+            //           .Property(x => x.Rol)
+            //           .IsRequired();
+
+            //modelBuilder.Entity<UserModel>()
+            //           .Property(x => x.LastName)
+            //           .HasMaxLength(15)
+            //           .IsRequired();
+
+            //modelBuilder.Entity<UserModel>()
+            //           .Property(x => x.FirstName)
+            //           .HasMaxLength(15)
+            //           .IsRequired();
+
+
+
+
+
+
 
 
 

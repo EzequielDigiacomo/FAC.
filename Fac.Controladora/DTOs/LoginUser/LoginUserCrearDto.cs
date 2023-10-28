@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fac.Entidades
+namespace Fac.Controladora.DTOs.LoginUser
 {
-    public class UserModel
+    public class LoginUserCrearDto
     {
-        public int Id { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string EmailAdress { get; set; }

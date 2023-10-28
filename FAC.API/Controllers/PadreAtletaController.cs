@@ -10,6 +10,7 @@ namespace FAC.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+   
     public class PadreAtletaController : ControllerBase
     {
         private readonly IPadreAtletaServices _services;
@@ -20,7 +21,7 @@ namespace FAC.API.Controllers
 
         // GET: api/<PadreAtletaController>
         [HttpGet]
-        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
+        //[Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<List<PadreAtletaDetalleDto>> Get()
         {
             var respuesta = await _services.ObtenerTodos();
@@ -39,7 +40,7 @@ namespace FAC.API.Controllers
 
         // POST api/<PadreAtletaController>
         [HttpPost]
-        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
+        [Authorize(Roles = ("administrador, entrenador, administrativo"))]
         public async Task<PadreAtletaDetalleDto> Post([FromBody] PadreAtletaCrearDto dto)
         {
             var respuesta = await _services.Crear(dto);
@@ -48,7 +49,7 @@ namespace FAC.API.Controllers
 
         // PUT api/<PadreAtletaController>/5
         [HttpPut("{id}")]
-        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
+        [Authorize(Roles = ("administrador, entrenador, administrativo"))]
         public async Task<PadreAtletaDetalleDto> Put(int id, [FromBody] PadreAtletaCrearDto dto)
         {
             var respuesta = await _services.Actualizar(id, dto);
@@ -57,7 +58,7 @@ namespace FAC.API.Controllers
 
         // DELETE api/<PadreAtletaController>/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
+        [Authorize(Roles = ("administrador, entrenador, administrativo"))]
         public async Task<PadreAtletaDetalleDto> Delete(int id)
         {
             var respuesta = await _services.Remover(id);

@@ -16,5 +16,6 @@ namespace Fac.Controladora.DTOs.PadreAtletaDtos
         public string? DireccionDelPadre { get; set; }
         public string? FotoDniFrontalPadre { get; set; }
         public string? FotoDniDorsalPadre { get; set; }
+        public int IdAtleta { get; set; }
     }
 }

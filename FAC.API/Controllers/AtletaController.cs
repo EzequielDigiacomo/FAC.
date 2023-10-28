@@ -10,6 +10,7 @@ namespace FAC.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [TypeFilter(typeof(ExceptionManagerFilter))]
+   
     public class AtletaController : ControllerBase
     {
         private readonly IAtletaServices _services;
@@ -46,7 +47,7 @@ namespace FAC.API.Controllers
 
         // POST api/<UsuarioController>
         [HttpPost]
-        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
+        [Authorize(Roles = ("administrador, entrenador, administrativo"))]
         public async Task<AtletaDetalleDto> Post([FromBody] AtletaCrearDto dto)
         {
             logger.LogWarning("Hubo un error al crear el atleta");
@@ -56,7 +57,7 @@ namespace FAC.API.Controllers
 
         // PUT api/<UsuarioController>/5
         [HttpPut("{id}")]
-        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
+        [Authorize(Roles = ("administrador, entrenador, administrativo"))]
         public async Task<AtletaDetalleDto> Put(int id, [FromBody] AtletaCrearDto dto)
         {
             logger.LogInformation("Se modifico un dato de un atleta");
@@ -66,7 +67,7 @@ namespace FAC.API.Controllers
 
         // DELETE api/<UsuarioController>/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
+        [Authorize(Roles = ("administrador, entrenador, administrativo"))]
         public async Task<AtletaDetalleDto> Delete(int id)
         {
             logger.LogInformation("Se elimino un atleta");

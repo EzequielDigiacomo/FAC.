@@ -16,5 +16,6 @@ namespace Fac.Controladora.DTOs.TutorAtletaDtos
         public string? DireccionDelTutor { get; set; }
         public string? FotoDniFrontalTutor { get; set; }
         public string? FotoDniDorsalTutor { get; set; }
+        public int IdAtleta { get; set; }
     }
 }
