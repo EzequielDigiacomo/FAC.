@@ -50,7 +50,7 @@ namespace FAC.API.Controllers
 
         private UserModel Authenticate(LoginUser userLogin)
         {
-            var currentUser = _context.Login.FirstOrDefault(user => user.UserName.ToLower() == userLogin.UserName.ToLower()
+            var currentUser = _context.Login.FirstOrDefault(user => user.EmailAdress.ToLower() == userLogin.EmailAdress.ToLower()
             && user.Password == userLogin.Password);
 
             if (currentUser != null)
@@ -70,7 +70,7 @@ namespace FAC.API.Controllers
             //crear los claims (reclamaciones)
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, user.UserName),
+                //new Claim(ClaimTypes.NameIdentifier, user.UserName),
                 new Claim(ClaimTypes.Email, user.EmailAdress),
                 new Claim(ClaimTypes.GivenName, user.FirstName),
                 new Claim(ClaimTypes.Surname, user.LastName),
@@ -96,7 +96,7 @@ namespace FAC.API.Controllers
                 var userClaims = identity.Claims;
                 return new UserModel
                 {
-                    UserName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
+                    //UserName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
                     EmailAdress = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
                     FirstName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.GivenName)?.Value,
                     LastName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value,

@@ -9,7 +9,7 @@ namespace FAC.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [TypeFilter(typeof(ExceptionManagerFilter))]
+    //[TypeFilter(typeof(ExceptionManagerFilter))]
    
     public class AtletaController : ControllerBase
     {
@@ -24,7 +24,7 @@ namespace FAC.API.Controllers
 
         // GET: api/<AtletaController>
         [HttpGet]
-        [Authorize(Roles = ("administrador, entrenador, administrativo, otros") )]
+        //[Authorize(Roles = ("administrador, entrenador, administrativo, otros") )]
         public async Task<List<AtletaDetalleDto>> Get()
         {
             logger.LogInformation("Obtener Todos los atletas");
@@ -35,7 +35,7 @@ namespace FAC.API.Controllers
 
         // GET api/<UsuarioController>/5
         [HttpGet("{id}")]
-        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
+        //[Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<AtletaDetalleDto> GetPorId(int id)
         {
             
@@ -47,7 +47,7 @@ namespace FAC.API.Controllers
 
         // POST api/<UsuarioController>
         [HttpPost]
-        [Authorize(Roles = ("administrador, entrenador, administrativo"))]
+        //[Authorize(Roles = ("administrador, entrenador, administrativo"))]
         public async Task<AtletaDetalleDto> Post([FromBody] AtletaCrearDto dto)
         {
             logger.LogWarning("Hubo un error al crear el atleta");
@@ -67,7 +67,7 @@ namespace FAC.API.Controllers
 
         // DELETE api/<UsuarioController>/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = ("administrador, entrenador, administrativo"))]
+        //[Authorize(Roles = ("administrador, entrenador, administrativo"))]
         public async Task<AtletaDetalleDto> Delete(int id)
         {
             logger.LogInformation("Se elimino un atleta");

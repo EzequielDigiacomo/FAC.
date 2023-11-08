@@ -2,6 +2,7 @@
 using Fac.Controladora.DTOs.LoginUser;
 using Fac.Controladora.DTOs.MadreAtletaDtos;
 using Fac.Entidades;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -17,7 +18,7 @@ namespace Fac.Controladora.Services.LoginUserServices
     {
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
-        public LoginUserServices(ApplicationDbContext context, IConfiguration configuration )
+        public LoginUserServices(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
@@ -28,7 +29,7 @@ namespace Fac.Controladora.Services.LoginUserServices
             var loginLista = await _context.Login.Select(l => new LoginUserDetalleDto
             {
                 Id = l.Id,
-                UserName = l.UserName,
+                //UserName = l.UserName,
                 Password = l.Password,
                 EmailAdress = l.EmailAdress,
                 Rol = l.Rol,
@@ -47,7 +48,7 @@ namespace Fac.Controladora.Services.LoginUserServices
             return new LoginUserDetalleDto
             {
                 Id = login.Id,
-                UserName = login.UserName,
+                //UserName = login.UserName,
                 Password = login.Password,
                 EmailAdress = login.EmailAdress,
                 Rol = login.Rol,
@@ -66,7 +67,7 @@ namespace Fac.Controladora.Services.LoginUserServices
 
             var login = new UserModel
             {
-                UserName = dto.UserName,
+                //UserName = dto.UserName,
                 Password = dto.Password,
                 EmailAdress = dto.EmailAdress,
                 Rol = dto.Rol,
@@ -81,7 +82,7 @@ namespace Fac.Controladora.Services.LoginUserServices
             return new LoginUserDetalleDto
             {
                 Id = login.Id,
-                UserName = dto.UserName,
+                //UserName = dto.UserName,
                 Password = dto.Password,
                 EmailAdress = dto.EmailAdress,
                 Rol = dto.Rol,
@@ -101,7 +102,7 @@ namespace Fac.Controladora.Services.LoginUserServices
 
             var login = await BuscarPorId(id);
 
-            login.UserName = dto.UserName;
+            //login.UserName = dto.UserName;
             login.Password = dto.Password;
             login.EmailAdress = dto.EmailAdress;
             login.Rol = dto.Rol;
@@ -115,7 +116,7 @@ namespace Fac.Controladora.Services.LoginUserServices
             return new LoginUserDetalleDto
             {
                 Id = login.Id,
-                UserName = login.UserName,
+                //UserName = login.UserName,
                 Password = login.Password,
                 EmailAdress = login.EmailAdress,
                 Rol = login.Rol,
@@ -133,7 +134,7 @@ namespace Fac.Controladora.Services.LoginUserServices
             return new LoginUserDetalleDto
             {
                 Id = login.Id,
-                UserName = login.UserName,
+                //UserName = login.UserName,
                 Password = login.Password,
                 EmailAdress = login.EmailAdress,
                 Rol = login.Rol,
@@ -157,78 +158,7 @@ namespace Fac.Controladora.Services.LoginUserServices
 
         //----------------------------------
 
-        //public async Task<UserModel> Login(LoginUser userLogin)
-        //{
-        //    var user = await Authenticate(userLogin);
 
-        //    if (user != null)
-        //    {
-        //        //crear token
-
-        //        var token = Generate(user);
-
-        //        return token;
-        //    }
-
-        //    return NotFound("Usuario no encontrado");
-        //}
-        //private UserModel Authenticate(LoginUser userLogin)
-        //{
-        //    var currentUser = UserConstants.Users.FirstOrDefault(user => user.UserName.ToLower() == userLogin.UserName.ToLower()
-        //    && user.Password == userLogin.Password);
-
-        //    if (currentUser != null)
-        //    {
-        //        return currentUser;
-        //    }
-        //    return null;
-        //}
-
-        ////Estos metodos hay que ponerlos en otro lado
-
-        //private string Generate(UserModel user)
-        //{
-        //    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-        //    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-        //    //crear los claims (reclamaciones)
-        //    var claims = new[]
-        //    {
-        //        new Claim(ClaimTypes.NameIdentifier, user.UserName),
-        //        new Claim(ClaimTypes.Email, user.EmailAdress),
-        //        new Claim(ClaimTypes.GivenName, user.FirstName),
-        //        new Claim(ClaimTypes.Surname, user.LastName),
-        //        new Claim(ClaimTypes.Role, user.Rol),
-        //    };
-
-        //    //crear el token
-        //    var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
-        //                                 _configuration["Jwt:Audience"],
-        //                                 claims,
-        //                                 expires: DateTime.Now.AddMinutes(1),
-        //                                 signingCredentials: credentials);
-
-        //    return new JwtSecurityTokenHandler().WriteToken(token);
-        //}
-
-        //private UserModel GetCurrentUser()
-        //{
-        //    var identity = HttpContext.User.Identity as ClaimsIdentity;
-
-        //    if (identity != null)
-        //    {
-        //        var userClaims = identity.Claims;
-        //        return new UserModel
-        //        {
-        //            UserName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
-        //            EmailAdress = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
-        //            FirstName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.GivenName)?.Value,
-        //            LastName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value,
-        //            Rol = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Role)?.Value
-        //        };
-        //    }
-        //    return null;
-        //}
     }
 }
 

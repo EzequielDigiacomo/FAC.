@@ -10,9 +10,10 @@ namespace Fac.Controladora.Services.LoginUserServices
         Task<LoginUserDetalleDto> ObtenerPorId(int id);
         Task<List<LoginUserDetalleDto>> ObtenerTodos();
         Task<LoginUserDetalleDto> Remover(int id);
-        //Task<UserModel> GetLogin(string userMame, string password);
 
-        //Task<UserModel> SaveLogin(LoginUserCrearDto dto);
+        //------------------
+
+
 
     }
 }

@@ -93,14 +93,15 @@ namespace FAC.API
 
             //----Cors para el conflicto entre web y api--
 
-            //builder.Services.AddCors(options => {
-            //    options.AddPolicy("Nueva Politica", app =>
-            //    {
-            //        app.AllowAnyOrigin()
-            //        .AllowAnyHeader()
-            //        .AllowAnyMethod();
-            //    });   
-            //});
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("Nueva Politica", app =>
+                {
+                    app.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
 
 
             var app = builder.Build();
@@ -120,7 +121,7 @@ namespace FAC.API
 
             //------activar Cors
 
-            //app.UseCors("Nueva Politica");
+            app.UseCors("Nueva Politica");
 
 
             app.UseHttpsRedirection();

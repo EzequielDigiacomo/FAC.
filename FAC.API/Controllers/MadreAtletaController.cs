@@ -20,7 +20,7 @@ namespace FAC.API.Controllers
 
         // GET: api/<MadreAtletaController>
         [HttpGet]
-        [Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
+        //[Authorize(Roles = ("administrador, entrenador, administrativo, otros"))]
         public async Task<List<MadreAtletaDetalleDto>> Get()
         {
             var respuesta = await _services.ObtenerTodos();
