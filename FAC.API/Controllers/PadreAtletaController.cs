@@ -40,7 +40,7 @@ namespace FAC.API.Controllers
 
         // POST api/<PadreAtletaController>
         [HttpPost]
-        [Authorize(Roles = ("administrador, entrenador, administrativo"))]
+        //[Authorize(Roles = ("administrador, entrenador, administrativo"))]
         public async Task<PadreAtletaDetalleDto> Post([FromBody] PadreAtletaCrearDto dto)
         {
             var respuesta = await _services.Crear(dto);
